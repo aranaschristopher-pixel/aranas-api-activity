@@ -15,5 +15,6 @@ Markdown
 
  - Why is it important to return `404` instead of just an empty array or a generic error?
     - Answer: It’s important to return 404 Not Found because it clearly tells the client that the resource doesn’t exist, instead of making them guess.
+
 **4. Testing:**
-- ![alt text](<image/Screenshot GET request.png>)
+ - ![alt text](<Screenshot GET request.png>)
