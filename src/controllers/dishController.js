@@ -10,3 +10,56 @@ const getAllDishes = async (req, res) => {
     }
 };
 
+// 2. CREATE: Add a new food item
+const createDish = async (req, res) => {
+    try{
+        const newDish = await Dish.create(req.body);
+        res.status(201).json(newDish);
+    } catch (error){
+        res.status(400).json({ message: error.message });
+    }
+};
+
+// GET ONE: Find a specific food by 10
+const getDishByID = async (req, res) => {
+    try {
+        const dish = await Dish.findById(req.params.id); //find by the ID number
+        if (!dish) return res.status(404).json({ message: 'Dish not found' });
+        res.status(200).json(dish);
+    } catch (error) {
+        res.status(500).json({ message: error.message});
+    }
+};
+
+// 4. UPDATE: Change a price or name
+const updateDish = async (req, res) => {
+    try {
+        const dish =await Dish.findByIdAndUpdate(req.params.id, req.body, {
+            new: true,
+        });
+        if (!dish) return res.status(404).json({ message: 'Dish not found' });
+        res.status(200).json(dish);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};
+
+// 5. DELETE: Remove an item from menu
+const deleteDish = async (req, res) => {
+    try {
+        const dish = await Dish.findByIdAndDelete(req.params.id);
+        if (!dish) return res.status(404).json({ message: 'Dish not found' });
+        res.status(200).json({ message: 'Dish deleted successfully'});
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+module.exports = {
+    getAllDishes,
+    createDish,
+    getDishByID,
+    updateDish,
+    deleteDish,
+};
+
