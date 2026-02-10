@@ -10,6 +10,15 @@ const {
     deleteDish,
 } = require ('../controllers/dishController');
 
+const {
+    getAllChefs,
+    createChef,
+    getChefByID,
+    updateChef,
+    deleteChef,
+} = require ('../controllers/chefController');
+
+//Routes in dishes
 // 1. If user goes to GET / (Show menu)
 router.get('/dishes', getAllDishes);
 
@@ -24,5 +33,12 @@ router.put('dishes/:id', updateDish);
 
 // 5. If user sends DELETE /:id (Cancel meal)
 router.delete('dishes/id', deleteDish);
+
+// Routes in Chef
+router.get('/chefs', getAllChefs);
+router.post('/chefs', createChef);
+router.get('/chefs/:id', getChefByID);
+router.put('/chefs/:id', updateChef);
+router.delete('/chefs/:id', deleteChef);
 
 module.exports = router;
