@@ -3,6 +3,24 @@ const router = express.Router();
 // Import controllers here...
 const { protect, authorize } = require('../middleware/authMiddleware');
 
+// Import the controller
+const {
+    getAllDishes,
+    createDish,
+    getDishByID,
+    updateDish,
+    deleteDish,
+} = require ('../controllers/dishController');
+
+const {
+    getAllChefs,
+    createChef,
+    getChefByID,
+    updateChef,
+    deleteChef,
+} = require ('../controllers/chefController');
+
+
 // ANYONE can get dishes
 router.get('/', getDishes);
 
